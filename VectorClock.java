@@ -1,7 +1,5 @@
 /*
 Student Name: Akshay Chandrachood
-Net id: amc400
-TxState id: A04742395
 */
 
 import java.util.*;
