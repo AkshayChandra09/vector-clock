@@ -1,0 +1,131 @@
+**************** PROJECT 2 READ ME***********************
+Student Name: Akshay Chandrachood
+Net id: amc400
+TxState id: A04742395
+*********************************************************
+
+Command to Compile and Run java files
+
+compile- javac VectorClock.java
+run- java VectorClock
+
+____________________________________________________________
+
+About Project:
+==============
+
+Program to calculate the timestamps of events on multiple processes
+using the vector clock rules.
+
+
+1. Initially all clocks are zero.
+2. Each time a process experiences an internal event, it increments its own logical clock in the vector by one.
+3. Each time for a process to send a message, it must increment its own clock (as in the bullet above) and then send a copy of its own vector.
+4. Each time a process receives a message, it increments its own logical clock in the vector by one and updates each element in its vector by taking the maximum of the    value in its own vector clock and the value in the vector in the received message (for every element).
+
+
+The inputs are the number of processes and some events happened 
+on the process. The outputs are the vector timestamps of all the 
+events and the complete order of these events.  
+Assume the initial time for each process starts from 0 and d = 1.
+
+___________________________________________________________________
+
+How To Run?
+===========
+
+1. Download the zip folder. Unzip it to your working direcory (in public_html).
+2. Navigate to your working directory. eg If file is located 
+inside OS directory which is inside public_html. 
+Type: cd public_html/
+      cd OS
+Type: ls  To check if you can see the extracted files/ensure 
+you are in the same directory.
+
+3. Compile java file using javac command and run it using java command
+
+_______________________________________________________________________
+
+Notes:
+======
+
+1. Programp prompts the number of processes 
+2. Then it will  ask the user for number of events in each process 
+3. It will ask for which events are communicating.
+   
+   e.g. Process 1 + event 1 communicating		1-1 
+   e.g. Process 1 + event 1 sending message		1-1 -> 2-2
+	and Process 2 + event 2 receiving
+	the message
+ 
+4. As Lamport's Vector Clock is based on happened-before relationship,
+   please input the events in sequential order. e.g. if 2-3 is happening 
+   after event 1-1, please enter 1-1 event first.
+
+_________________________________________________________________________
+
+Sample Run:
+===========
+
+Please Enter Number of Processes: 
+3
+Please Enter Number of Events in 1 Process: 
+4
+Please Enter Number of Events in 2 Process: 
+4
+Please Enter Number of Events in 3 Process: 
+4
+
+
+p1: 1:(100)  2:(200)  3:(300)  4:(400)  
+
+p2: 1:(010)  2:(020)  3:(030)  4:(040)  
+
+p3: 1:(001)  2:(002)  3:(003)  4:(004)  
+
+Enter which process sending msg: 
+1
+Enter which event in that sending msg: 
+1
+Enter which process recv msg: 
+2
+Enter which event recv msg: 
+2
+Any other process communicating? y
+Enter which process sending msg: 
+1
+Enter which event in that sending msg: 
+3
+Enter which process recv msg: 
+3
+Enter which event recv msg: 
+4
+Any other process communicating? y
+Enter which process sending msg: 
+2
+Enter which event in that sending msg: 
+3
+Enter which process recv msg: 
+3
+Enter which event recv msg: 
+1
+Any other process communicating? y
+Enter which process sending msg: 
+3
+Enter which event in that sending msg: 
+2
+Enter which process recv msg: 
+1
+Enter which event recv msg: 
+2
+Any other process communicating? n
+
+Timestamps are: 
+p1: 1:(100)  2:(232)  3:(332)  4:(432)  
+
+p2: 1:(010)  2:(120)  3:(130)  4:(140)  
+
+p3: 1:(131)  2:(132)  3:(133)  4:(334)  
+
+_______________________________________________________________________
+ 
